@@ -21,12 +21,14 @@
         echo "\nLa edad de $nombre_persona es $edad";
         echo "{$nombre_persona}s age is $edad";
 
+        $nombre_persona="jose";
         echo "<br/>La nota es $nota";
 /* Con printf podemos mostrar los valores formateados, se utiliza en la cadena de
 * texto un % y una letra que indica el tipo de dato, los tipos mas tipo
 * %d - entero %f - float %s -string*/
         printf("<br/>La nota de %s es %.2f",$nombre_persona,$nota);
 
+       
 
     ?>
 </body>
