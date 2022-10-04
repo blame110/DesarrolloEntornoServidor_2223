@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +11,11 @@
 </head>
 <body>
     <div class="container">
-        <form>
+        <form action="recepcionDatosFormulario.php" method="post">
           <div class="row">
             <h4>Account</h4>
             <div class="input-group input-group-icon">
-              <input type="text" placeholder="Full Name"/>
+              <input type="text" placeholder="Escribe tu nombre" id="name" name="name"  />
               <div class="input-icon"><i class="fa fa-user"></i></div>
             </div>
             <div class="input-group input-group-icon">
@@ -80,6 +81,11 @@
                   <option>2016</option>
                 </select>
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <input id="enviar" type="submit" value="Aceptar"/>
             </div>
           </div>
           <div class="row">
