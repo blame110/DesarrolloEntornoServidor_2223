@@ -36,8 +36,8 @@
     <label for="edad">Edad</label>
     <select id="edad" name="edad">
         <?php
-        //opcion limpia
-        for ($i = 1; $i < 121; $i = $i + 2) {
+        //opcion limpia con pares
+        for ($i = 2; $i < 121; $i = $i + 2) {
             print("<option value='$i'>$i</option>");
         }
         ?>
