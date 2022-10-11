@@ -12,31 +12,15 @@
 
 <body>
 
-  <form>
+  <form method="POST" action="recepcionDatos2.php">
 
     <div class="container">
 
       <div class="row">
 
 
-        <div class="col-lg-6 col-sm-6">
-          <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <!-- enlaces -->
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Opción 1</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Opción 2</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Opción 3</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Opción 4</a>
-              </li>
-            </ul>
-          </nav>
+        <div class="col-lg-9 col-sm-9">
+
           <!-- Margenes con mb mr ml mt -sm-distancia-->
           <!-- Misma linea -->
           <div class="form-group row mb-sm-2 mt-sm-2">
@@ -61,70 +45,71 @@
           </div>
 
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="checkbox4" name="checkbox4">
+            <input class="form-check-input" type="checkbox" value="condAc" id="checkbox4" name="subscripcion[]" checked>
             <label class="form-check-label" for="checkbox4">
-              Opcion 1
+              Acepto Las Condiciones
             </label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="checkbox5" name="checkbox5">
+            <input class="form-check-input" type="checkbox" value="insc" id="checkbox5" name="subscripcion[]" >
             <label class="form-check-label" for="checkbox5">
-              Opcion 2
+              Apuntarme a las Noticias
             </label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" value="" id="checkbox3" name="checkbox6">
+            <input class="form-check-input" type="checkbox" value="poncho" id="checkbox3" name="subscripcion[]">
             <label class="form-check-label" for="checkbox6">
-              Opcion 3
+              Llevo un Poncho
             </label>
           </div>
           <br>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" value="" id="radio4" name="grupo2">
+            <input class="form-check-input" type="radio" value="M" id="radio4" name="sexo">
             <label class="form-check-label" for="radio4">
-              Opcion 1
+              Masculino
             </label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" value="" id="radio5" name="grupo2">
+            <input class="form-check-input" type="radio" value="F" id="radio5" name="sexo">
             <label class="form-check-label" for="radio5">
-              Opcion 2
+              Femenino
             </label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" value="" id="radio6" name="grupo2">
+            <input class="form-check-input" type="radio" value="X" id="radio6" name="sexo">
             <label class="form-check-label" for="radio6">
-              Opcion 3
+              Mixto
             </label>
           </div>
           <br>
           <div class="form-check form-switch mt-sm-3">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" name="default">
             <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
           </div>
           <div class="form-check form-switch mb-sm-3">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="checked" checked>
             <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
           </div>
 
           <div class="mb-3">
             <label for="control1">Seleccione un elemento</label>
-            <select class="form-control w-25" id="control1" name="control1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select class="form-control w-25" id="control1" name="planta">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
+
           <div class="form-group">
             <label for="control2">Seleccione varios elementos</label>
-            <select multiple class="form-control w-25" id="control2" name="control2">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select multiple class="form-control w-25" id="control2" name="modulos[]">
+              <option value="ES">Entorno Servidor</option>
+              <option  value="DE">Despligue</option>
+              <option  value="EM">Empresa</option>
+              <option  value="DI">Diseño</option>
+              <option  value="CL">Cliente</option>
             </select>
           </div>
 
@@ -134,29 +119,6 @@
           <!-- px-4 py-5 pading x e y -->
 
           <button type="submit" class="btn btn-default mb-sm-2 shadow p-3 mb-5 bg-body rounded px-3 py-2">Enviar</button>
-
-
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Inicio</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">4</a></li>
-            <li class="page-item"><a class="page-link" href="#">5</a></li>
-            <li class="page-item"><a class="page-link" href="#">6</a></li>
-            <li class="page-item"><a class="page-link" href="#">Último</a></li>
-          </ul>
-
-
-
-          <button class="btn btn-warning" href="#politica" data-toggle="collapse">Políticas de privacidad</button>
-          <div id="politica" class="collapse">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.
-          </div>
 
         </div>
       </div>
