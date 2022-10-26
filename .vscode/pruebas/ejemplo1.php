@@ -1,5 +1,25 @@
 <?php
 
+function isIsogram($string) {
+  $resultado=true;
+  $letras=str_split($string);
+  $cletras=array_count_values($letras);
+  echo var_dump($cletras);
+      foreach($cletras as $letra)
+        {
+          
+        if ($letra>1)
+          $resultado=false;
+      }
+  
+  return $resultado;
+}
+
+if (isIsogram("isogram"))
+echo "Es isogram";
+else
+echo "No es Isogram";
+
 function orderWeight($str) {
   $nums = explode(" ", $str);
   $cambio="";
