@@ -1,11 +1,13 @@
 <?php
 
 
-function suma2($num1, $num2)
+
+function suma2($num1, $num2) 
 {
 
     $resultado = $num1 + $num2;
     print($resultado);
+ 
 }
 
 
@@ -43,3 +45,11 @@ print "\nNum3 vale $num3";
 print "\n".maximo(3,6);
 
 print "\n".maximo(6,num3:6,num2:4);
+
+$nombreFuncion="maximo";
+//Al igual que con las variables, podemos llamar a las funciones con doble referencia
+//si tenemos su nombre en otra variable.
+//print ${$nombreFuncion}(3,4,8);
+?>
+
+

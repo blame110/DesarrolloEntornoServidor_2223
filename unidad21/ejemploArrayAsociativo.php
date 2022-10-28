@@ -40,6 +40,8 @@ var_dump($juego);
         }
 
         $claves= array_keys($juego);
+
+      
       
 
         foreach($claves as $key)
@@ -63,6 +65,13 @@ var_dump($juego);
 </select>
 
 <?php
+
+print "\n\n\nBusqueda en un Array";
+if (in_array("score",$claves))
+{
+    print "\n\n\nScore esta en el array de claves\n\n\n";
+}
+
    print var_dump($claves)."<br/>";
    //Unset destruye una variable, si es una posicion de un array tambien, pero queda el hueco
    unset($claves[1]);

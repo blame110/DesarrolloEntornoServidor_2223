@@ -42,7 +42,10 @@ print "Encontrada en la posicion ".strrpos($fraseT,"una");
 
 $cantidad=0;
 $reemplazada=str_replace("una","uno",$fraseT,$cantidad);
-var_dump($reemplazada);
-print "Elementos reemplazados $cantidad";
+
+print "\nFrase Original:";var_dump($fraseT);
+print "\nFrase Modificada:";var_dump($reemplazada);
+
+print "\nElementos reemplazados $cantidad";
 
 
