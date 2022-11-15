@@ -12,7 +12,7 @@
 
 <body>
 
-  <form method="POST" action="recepcionDatos2.php">
+  <form method="POST" action="recepcionDatosFormulario.php">
 
     <div class="container">
 

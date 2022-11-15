@@ -2,7 +2,7 @@
 
 function isIsogram($string) {
   $resultado=true;
-  $letras=str_split($string);
+  $letras=str_split(strtoupper($string));
   $cletras=array_count_values($letras);
   echo var_dump($cletras);
       foreach($cletras as $letra)

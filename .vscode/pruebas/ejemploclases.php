@@ -31,4 +31,6 @@ echo var_dump($jose);
 $jose->setEdad(26);
 
 echo "Hola ".$jose->edad;
+
+
 ?>
