@@ -10,7 +10,6 @@
 
     /* Vincular por número de columna */
     $sentencia->bindColumn(1, $ciudad);
-     
     /* Vincular por nombre de columna */
     $sentencia->bindColumn('country_id', $identificador);
 

@@ -6,6 +6,6 @@ $num2 = 300;
 
 echo $num."0"+$num2."0";
 
-//phpinfo();
+phpinfo();
 
 ?>
