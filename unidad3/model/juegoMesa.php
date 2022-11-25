@@ -1,5 +1,6 @@
-
 <?php
+namespace unidad3\model;
+
 
 class JuegoMesa extends Producto {
 

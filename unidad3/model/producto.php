@@ -1,4 +1,5 @@
 <?php
+namespace unidad3\model;
 
 /**
  * Clase Producto

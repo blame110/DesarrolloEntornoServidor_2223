@@ -27,7 +27,6 @@
                 xmlHttpDoc.onreadystatechange = function() {
                    
                     if (this.readyState == 4 && this.status == 200) {
-                        alert("entra");
                         document.getElementById("detUser").innerHTML = this.responseText;
                     }
                 };
@@ -49,9 +48,9 @@
 
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div onclick="cargarDatos(2)" class="col-lg-12 col-xl-11">
+                <div class="col-lg-12 col-xl-11">
 
-                    <a >2 Pedro Suarez</a>
+                    <a  onclick="cargarDatos(2)">2 Pedro Suarez</a>
 
                 </div>
                 <div id="detUser"  class="row d-flex justify-content-center align-items-center h-100">
