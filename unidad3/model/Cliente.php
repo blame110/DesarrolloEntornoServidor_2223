@@ -1,6 +1,11 @@
 <?php
 
+namespace model;
+
 require_once("Utils.php");
+
+use \PDO;
+use \PDOException;
 
 class Cliente
 {
@@ -86,7 +91,7 @@ class Cliente
     {
 
         $result = null;
-           if (isset($cliente) && $conexPDO != null) {
+        if (isset($cliente) && $conexPDO != null) {
 
             try {
                 //Preparamos la sentencia
@@ -110,21 +115,19 @@ class Cliente
 
     function delCliente($idCliente, $conexPDO)
     {
-        $result=null;
+        $result = null;
 
         if (isset($idCliente) && is_numeric($idCliente)) {
 
 
             if ($conexPDO != null) {
                 try {
-                   //Borramos el cliente asociado a dicho id
+                    //Borramos el cliente asociado a dicho id
                     $sentencia = $conexPDO->prepare("DELETE  FROM tienda.clientes where idClientes=?");
                     //Asociamos a cada interrogacion el valor que queremos en su lugar
                     $sentencia->bindParam(1, $idCliente);
                     //Ejecutamos la sentencia
                     $result = $sentencia->execute();
-
-
                 } catch (PDOException $e) {
                     print("Error al borrar" . $e->getMessage());
                 }
@@ -132,27 +135,24 @@ class Cliente
         }
 
         return $result;
-
     }
 
-    function updateCliente($cliente,$conexPDO)
+    function updateCliente($cliente, $conexPDO)
     {
-        
+
         $result = null;
-           if (isset($cliente) && isset($cliente["idCliente"]) && is_numeric($cliente["idCliente"])  && $conexPDO != null) {
+        if (isset($cliente) && isset($cliente["idClientes"]) && is_numeric($cliente["idClientes"])  && $conexPDO != null) {
 
             try {
                 //Preparamos la sentencia
-                $sentencia = $conexPDO->prepare("UPDATE tienda.clientes set nombre=:nombre, email=:email, edad=:edad,sexo=:sexo where idClientes=:idCliente");
+                $sentencia = $conexPDO->prepare("UPDATE tienda.clientes set nombre=:nombre, email=:email, edad=:edad,sexo=:sexo where idClientes=:idClientes");
 
                 //Asociamos los valores a los parametros de la sentencia sql
-                $sentencia->bindParam(":idCliente", $cliente["idCliente"]);
+                $sentencia->bindParam(":idClientes", $cliente["idClientes"]);
                 $sentencia->bindParam(":nombre", $cliente["nombre"]);
                 $sentencia->bindParam(":email", $cliente["email"]);
                 $sentencia->bindParam(":edad", $cliente["edad"]);
                 $sentencia->bindParam(":sexo", $cliente["sexo"]);
-
-                print ($sentencia::queryString);
 
                 //Ejecutamos la sentencia
                 $result = $sentencia->execute();
@@ -163,7 +163,6 @@ class Cliente
 
         return $result;
     }
-
 }
 
 $gestorCli = new Cliente();
@@ -182,13 +181,13 @@ print("El nombre de la segunda mujer es" . $resultado[1]["nombre"]);
 
 $alvaro = ["nombre" => "alvaro", "email" => "alvaro@gmail.com", "edad" => 24, "sexo" => "H"];
 //Probamos la insercion
-var_dump($gestorCli->addCliente($alvaro, $conexPDO));
+//var_dump($gestorCli->addCliente($alvaro, $conexPDO));
 
 //Modificamos la edad de alvaro
-$alvaro["edad"]=13;
-$alvaro["idCliente"]=8;
+$alvaro["edad"] = 13;
+$alvaro["idClientes"] = 13;
 
-var_dump($gestorCli->updateCliente($alvaro, $conexPDO));
+print("Resultado actualizacion: " . $gestorCli->updateCliente($alvaro, $conexPDO));
 
 
 //var_dump($gestorCli->delCliente(6,$conexPDO));
