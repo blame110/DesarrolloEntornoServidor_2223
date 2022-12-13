@@ -41,7 +41,7 @@ class Cliente
     }
 
     /**Funcion que nos devuelve todos los clientes */
-    public function getClientes($conexPDO, $orden, $campoOrd, $numPag, $cantElem)
+    public function getClientes($conexPDO)
     {
 
         if ($conexPDO != null) {
@@ -49,6 +49,56 @@ class Cliente
                 //Primero introducimos la sentencia a ejecutar con prepare
                 //Ponemos en lugar de valores directamente, interrogaciones
                 $sentencia = $conexPDO->prepare("SELECT * FROM tienda.clientes");
+                //Ejecutamos la sentencia
+                $sentencia->execute();
+
+                //Devolvemos los datos del cliente
+                return $sentencia->fetchAll();
+            } catch (PDOException $e) {
+                print("Error al acceder a BD" . $e->getMessage());
+            }
+        }
+    }
+
+
+    /**
+     * Funcion que nos devuelve todos los clientes con paginacion
+     * */
+    public function getClientesPag($conexPDO, $ordAsc, string $campoOrd, int $numPag, int $cantElem)
+    {
+
+        if ($conexPDO != null) {
+            try {
+                //Primero introducimos la sentencia a ejecutar con prepare
+                //Ponemos en lugar de valores directamente, interrogaciones
+
+                //Query inicial
+                $query = "SELECT * FROM tienda.clientes ORDER BY ? ";
+
+                //si esta ordenada descentemente añadimos DESC
+                if (!$ordAsc) $query = $query . "DESC ";
+
+                //Añadimos a la query la cantidad de elementos por página con LIMIT
+                //Y desde que página empieza con OFFSET
+                $query = $query . "LIMIT ? OFFSET ?";
+
+                $sentencia = $conexPDO->prepare($query);
+                //el primer parametro es el campo a ordenar
+                $sentencia->bindParam(1, $campoOrd);
+                //El segundo parametro es la cantidad de elementos por pagina
+                $sentencia->bindParam(2, $cantElem, PDO::PARAM_INT);
+                //El tercer parametro es desde que registro empieza a partir de la
+                //pagina actual
+                $offset = ($numPag - 1) * $cantElem;
+                if ($numPag != 1)
+                    $offset++;
+
+                $sentencia->bindParam(3, $offset, PDO::PARAM_INT);
+
+                //INTERESANTE 
+                //queryString contiene la sentencia sql a ejecutar
+                //print($sentencia->queryString);
+
                 //Ejecutamos la sentencia
                 $sentencia->execute();
 
@@ -165,6 +215,8 @@ class Cliente
     }
 }
 
+/* Pruebas que no deberían estar aqui
+
 $gestorCli = new Cliente();
 
 //Nos conectamos a la Bd
@@ -187,7 +239,13 @@ $alvaro = ["nombre" => "alvaro", "email" => "alvaro@gmail.com", "edad" => 24, "s
 $alvaro["edad"] = 13;
 $alvaro["idClientes"] = 13;
 
-print("Resultado actualizacion: " . $gestorCli->updateCliente($alvaro, $conexPDO));
+//print("Resultado actualizacion: " . $gestorCli->updateCliente($alvaro, $conexPDO));
 
 
 //var_dump($gestorCli->delCliente(6,$conexPDO));
+
+
+$resultado2 = $gestorCli->getClientesPag($conexPDO, false, "sexo", 2, 5);
+
+var_dump($resultado2);
+*/
