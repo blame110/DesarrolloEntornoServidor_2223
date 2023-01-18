@@ -13,7 +13,6 @@ $conexPDO = Utils::conectar();
 //Recolectamos los datos de los clientes
 $datosClientes = $gestorCli->getClientesPag($conexPDO, true, "idClientes", 1, 10);
 
-
 //var_dump($datosClientes);
 include("../views/mostrarClientes.php");
 

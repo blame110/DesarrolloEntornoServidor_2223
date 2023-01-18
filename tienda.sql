@@ -46,7 +46,19 @@ CREATE TABLE `clientes` (
   `nombre` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
-  `sexo` varchar(1) DEFAULT NULL
+  `sexo` varchar(1) DEFAULT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `usuarios` (
+  `idUsuario` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `edad` int(11) DEFAULT NULL,
+  `sexo` varchar(1) DEFAULT NULL,
+  `password` varchar(256) DEFAULT NULL,
+  `salt` varchar(16),
+  `activo` tinyint,
+  `codActivacion` int(5)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

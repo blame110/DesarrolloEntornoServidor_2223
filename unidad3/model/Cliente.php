@@ -187,15 +187,19 @@ class Cliente
         return $result;
     }
 
+
     function updateCliente($cliente, $conexPDO)
     {
 
+       
         $result = null;
         if (isset($cliente) && isset($cliente["idClientes"]) && is_numeric($cliente["idClientes"])  && $conexPDO != null) {
 
             try {
                 //Preparamos la sentencia
                 $sentencia = $conexPDO->prepare("UPDATE tienda.clientes set nombre=:nombre, email=:email, edad=:edad,sexo=:sexo where idClientes=:idClientes");
+
+                //print($sentencia->queryString);
 
                 //Asociamos los valores a los parametros de la sentencia sql
                 $sentencia->bindParam(":idClientes", $cliente["idClientes"]);
@@ -248,4 +252,19 @@ $alvaro["idClientes"] = 13;
 $resultado2 = $gestorCli->getClientesPag($conexPDO, false, "sexo", 2, 5);
 
 var_dump($resultado2);
+
+
+$gestorCli = new Cliente();
+
+//Nos conectamos a la Bd
+$conexPDO = Utils::conectar();
+
+for ($i=0;$i<10;$i++)
+{
+$alvaro = ["nombre" => "alvaro$i", "email" => "alvaro$i@gmail.com", "edad" => random_int(1,120), "sexo" => (random_int(1,100)>50?"H":"M")];
+
+$gestorCli->addCliente($alvaro, $conexPDO);
+
+}
 */
+
