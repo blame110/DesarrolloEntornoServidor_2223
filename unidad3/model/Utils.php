@@ -93,7 +93,21 @@ class Utils {
 //var_dump($util->conectar());
 
 //echo Utils::limpiar_datos("<scritp ...\2>");
-$usuario["nombre"]="Jose";
-$usuario["email"]="vgalflo309@g.educaand.es";
+//$usuario["nombre"]="Jose";
+//$usuario["email"]="vgalflo309@g.educaand.es";
 
-Utils::correo_registro($usuario);
+//Utils::correo_registro($usuario);
+/*
+//Ejemplo de filtrado de datos
+$email = "john.doe@example.nation.com";
+
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  echo("$email is a valid email address");
+} else {
+  echo("$email is not a valid email address");
+}
+*/
+//Ejemplo de añadir cookie
+setcookie("nombre", "Pablo Galvan", time()+3600, "/","", 0);
+
+

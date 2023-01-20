@@ -1,4 +1,10 @@
 <?php
+
+//Iniciamos la sesion
+session_start();
+//Ejemplo añadimos un id ficticio a la sesion
+$_SESSION['id']=12345;
+
 use \model\Cliente;
 use \model\Utils;
 

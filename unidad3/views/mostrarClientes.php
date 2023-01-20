@@ -1,5 +1,18 @@
 <?php
 namespace views;
+//Comprobamos que la sesion esta iniciada
+session_start();
+
+if (!isset($_SESSION['id']))
+{
+  print "Sesion no valida, redireccionando a la pagina principal";
+}
+else{
+  print "el id de sesion es ".$_SESSION['id'];
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
