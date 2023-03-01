@@ -72,8 +72,12 @@ class Cliente
                 //Primero introducimos la sentencia a ejecutar con prepare
                 //Ponemos en lugar de valores directamente, interrogaciones
 
+                //En los order by no se pueden poner valores, son nombres de campos de BD
+                //hay que poner directamente el campo por el cual se ordena
+                //es recomendable controlar que el campo sea uno de los de la tabla
+
                 //Query inicial
-                $query = "SELECT * FROM tienda.clientes ORDER BY ? ";
+                $query = "SELECT * FROM tienda.clientes ORDER BY $campoOrd ";
 
                 //si esta ordenada descentemente añadimos DESC
                 if (!$ordAsc) $query = $query . "DESC ";
@@ -83,17 +87,16 @@ class Cliente
                 $query = $query . "LIMIT ? OFFSET ?";
 
                 $sentencia = $conexPDO->prepare($query);
-                //el primer parametro es el campo a ordenar
-                $sentencia->bindParam(1, $campoOrd);
+                
                 //El segundo parametro es la cantidad de elementos por pagina
-                $sentencia->bindParam(2, $cantElem, PDO::PARAM_INT);
+                $sentencia->bindParam(1, $cantElem, PDO::PARAM_INT);
                 //El tercer parametro es desde que registro empieza a partir de la
                 //pagina actual
                 $offset = ($numPag - 1) * $cantElem;
                 if ($numPag != 1)
                     $offset++;
 
-                $sentencia->bindParam(3, $offset, PDO::PARAM_INT);
+                $sentencia->bindParam(2, $offset, PDO::PARAM_INT);
 
                 //INTERESANTE 
                 //queryString contiene la sentencia sql a ejecutar
